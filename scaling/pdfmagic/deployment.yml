@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pdfmagic
+  labels:
+    app: pdfmagic
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pdfmagic
+  template:
+    metadata:
+      labels:
+        app: pdfmagic
+    spec:
+      containers:
+      - name: pdfmagic
+        image: 0track/pdfmagic
+        resources:
+          requests:
+            cpu: 0.5
+        ports:
+          - containerPort: 8080
